@@ -1,0 +1,27 @@
+[
+  {
+    "password": "familia2024",
+    "familyName": "Familia García",
+    "personalMessage": "Querida familia García, nos llena de alegría tenerlos en este día especial."
+  },
+  {
+    "password": "amigos2024",
+    "familyName": "Amigos Queridos",
+    "personalMessage": "Queridos amigos, su amistad es un regalo que atesoramos."
+  },
+  {
+    "password": "ejemplo3",
+    "familyName": "Familia Ejemplo 3",
+    "personalMessage": "Tu mensaje personalizado aquí."
+  },
+  {
+    "password": "ejemplo4",
+    "familyName": "Familia Ejemplo 4",
+    "personalMessage": "Tu mensaje personalizado aquí."
+  },
+  {
+    "password": "ejemplo5",
+    "familyName": "Familia Ejemplo 5",
+    "personalMessage": "Tu mensaje personalizado aquí."
+  }
+]
