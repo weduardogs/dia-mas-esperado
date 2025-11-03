@@ -39,6 +39,7 @@ class PhotoModel(Base):
     url = Column(String(500), nullable=False)
     public_id = Column(String(255), unique=True, index=True, nullable=False)
     album_id = Column(String(36), ForeignKey("albums.id", ondelete="CASCADE"), nullable=False)
+    media_type = Column(String(10), nullable=False, default="image")  # "image" or "video"
     thumbnail_url = Column(String(500), nullable=True)
     original_filename = Column(String(255), nullable=True)
     uploader_name = Column(String(255), nullable=True, default="Anonymous")
@@ -46,6 +47,7 @@ class PhotoModel(Base):
     width = Column(Integer, nullable=True)
     height = Column(Integer, nullable=True)
     format = Column(String(10), nullable=True)
+    duration = Column(Integer, nullable=True)  # Duration in seconds (for videos)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

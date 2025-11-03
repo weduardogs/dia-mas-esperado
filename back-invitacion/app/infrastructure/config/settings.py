@@ -45,6 +45,26 @@ class Settings(BaseSettings):
     CLOUDINARY_API_KEY: str = ""
     CLOUDINARY_API_SECRET: str = ""
 
+    # File Upload Limits
+    MAX_FILES_PER_REQUEST: int = 10
+    MAX_FILE_SIZE_MB: int = 50
+    MAX_TOTAL_REQUEST_SIZE_MB: int = 300
+
+    # Allowed File Types
+    ALLOWED_IMAGE_TYPES: list = [
+        "image/jpeg",
+        "image/png",
+        "image/heif",
+        "image/heic",
+        "image/webp",
+        "image/gif",
+    ]
+    ALLOWED_VIDEO_TYPES: list = [
+        "video/mp4",
+        "video/quicktime",  # MOV files
+        "video/webm",
+    ]
+
     class Config:
         env_file = ".env"
         case_sensitive = True

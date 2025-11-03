@@ -6,11 +6,12 @@ from app.infrastructure.config.settings import settings
 
 Base = declarative_base()
 
+# Use NullPool for remote database connections (Hostinger)
+# Each session creates and closes its own connection
 engine = create_async_engine(
     settings.DATABASE_URL,
     echo=settings.DATABASE_ECHO,
-    future=True,
-    poolclass=NullPool,  # Sin pool: cada request crea y cierra su propia conexión
+    poolclass=NullPool,  # No connection pooling - create fresh connection each time
 )
 
 AsyncSessionLocal = async_sessionmaker(
@@ -27,9 +28,13 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
     async with AsyncSessionLocal() as session:
         try:
             yield session
-            await session.commit()
+            # Only commit if there's an active transaction
+            if session.in_transaction():
+                await session.commit()
         except Exception:
-            await session.rollback()
+            # Only rollback if there's an active transaction
+            if session.in_transaction():
+                await session.rollback()
             raise
 
 

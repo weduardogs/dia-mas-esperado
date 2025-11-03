@@ -21,6 +21,7 @@ class PhotoRepositoryImpl(PhotoRepository):
             url=model.url,
             public_id=model.public_id,
             album_id=model.album_id,
+            media_type=model.media_type,
             thumbnail_url=model.thumbnail_url,
             original_filename=model.original_filename,
             uploader_name=model.uploader_name,
@@ -28,6 +29,7 @@ class PhotoRepositoryImpl(PhotoRepository):
             width=model.width,
             height=model.height,
             format=model.format,
+            duration=model.duration,
             created_at=model.created_at,
             updated_at=model.updated_at,
         )
@@ -39,6 +41,7 @@ class PhotoRepositoryImpl(PhotoRepository):
             url=entity.url,
             public_id=entity.public_id,
             album_id=entity.album_id,
+            media_type=entity.media_type,
             thumbnail_url=entity.thumbnail_url,
             original_filename=entity.original_filename,
             uploader_name=entity.uploader_name,
@@ -46,6 +49,7 @@ class PhotoRepositoryImpl(PhotoRepository):
             width=entity.width,
             height=entity.height,
             format=entity.format,
+            duration=entity.duration,
             created_at=entity.created_at,
             updated_at=entity.updated_at,
         )
@@ -57,6 +61,15 @@ class PhotoRepositoryImpl(PhotoRepository):
         await self.session.flush()
         await self.session.refresh(model)
         return self._to_entity(model)
+
+    async def bulk_create(self, entities: List[Photo]) -> List[Photo]:
+        """Create multiple photos in a single operation"""
+        models = [self._to_model(entity) for entity in entities]
+        self.session.add_all(models)
+        await self.session.flush()
+        # No need to refresh each model individually since expire_on_commit=False
+        # Just return the entities we created with their IDs
+        return [self._to_entity(model) for model in models]
 
     async def get_by_id(self, entity_id: str) -> Optional[Photo]:
         """Get photo by ID"""
@@ -86,6 +99,7 @@ class PhotoRepositoryImpl(PhotoRepository):
         model.url = entity.url
         model.public_id = entity.public_id
         model.album_id = entity.album_id
+        model.media_type = entity.media_type
         model.thumbnail_url = entity.thumbnail_url
         model.original_filename = entity.original_filename
         model.uploader_name = entity.uploader_name
@@ -93,6 +107,7 @@ class PhotoRepositoryImpl(PhotoRepository):
         model.width = entity.width
         model.height = entity.height
         model.format = entity.format
+        model.duration = entity.duration
         model.updated_at = datetime.utcnow()
 
         await self.session.flush()

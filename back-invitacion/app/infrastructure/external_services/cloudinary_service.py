@@ -1,7 +1,8 @@
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-from typing import BinaryIO, Dict, Any
+import asyncio
+from typing import BinaryIO, Dict, Any, List, Tuple
 from app.infrastructure.config.settings import settings
 
 
@@ -74,6 +75,82 @@ class CloudinaryService:
 
         except Exception as e:
             raise Exception(f"Failed to upload image to Cloudinary: {str(e)}")
+
+    async def upload_video(
+        self, file: BinaryIO, filename: str, folder: str = "videos"
+    ) -> Dict[str, Any]:
+        """
+        Upload a video to Cloudinary
+
+        Args:
+            file: Binary file object
+            filename: Original filename
+            folder: Cloudinary folder path
+
+        Returns:
+            Dict with upload response including url, public_id, duration, etc.
+        """
+        try:
+            # Upload the video
+            response = cloudinary.uploader.upload(
+                file,
+                folder=folder,
+                resource_type="video",
+                transformation=[
+                    {"quality": "auto:good"},
+                    {"fetch_format": "auto"},
+                ],
+            )
+
+            # Extract relevant data
+            result = {
+                "url": response.get("secure_url"),
+                "public_id": response.get("public_id"),
+                "thumbnail_url": None,  # No thumbnail generation for videos as per requirements
+                "width": response.get("width"),
+                "height": response.get("height"),
+                "format": response.get("format"),
+                "bytes": response.get("bytes"),
+                "duration": response.get("duration"),  # Duration in seconds
+                "resource_type": response.get("resource_type"),
+            }
+
+            return result
+
+        except Exception as e:
+            raise Exception(f"Failed to upload video to Cloudinary: {str(e)}")
+
+    async def bulk_upload(
+        self, files_data: List[Tuple[BinaryIO, str, str]], folder: str = "photos"
+    ) -> List[Dict[str, Any]]:
+        """
+        Upload multiple files (images and/or videos) in parallel to Cloudinary
+
+        Args:
+            files_data: List of tuples (file, filename, media_type)
+                       media_type should be "image" or "video"
+            folder: Cloudinary folder path
+
+        Returns:
+            List of upload results (same order as input)
+        """
+        async def upload_single(file_data: Tuple[BinaryIO, str, str]) -> Dict[str, Any]:
+            file, filename, media_type = file_data
+            try:
+                if media_type == "video":
+                    return await self.upload_video(file, filename, folder)
+                else:
+                    return await self.upload_image(file, filename, folder)
+            except Exception as e:
+                return {
+                    "error": str(e),
+                    "filename": filename,
+                    "success": False
+                }
+
+        # Upload all files in parallel
+        results = await asyncio.gather(*[upload_single(data) for data in files_data])
+        return results
 
     async def delete_image(self, public_id: str) -> Dict[str, Any]:
         """
