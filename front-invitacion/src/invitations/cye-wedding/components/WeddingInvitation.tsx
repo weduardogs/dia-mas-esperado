@@ -7,6 +7,7 @@ import LocationSection from './LocationSection';
 import ItinerarySection from './ItinerarySection';
 import NotesSection from './NotesSection';
 import GiftRegistrySection from './GiftRegistrySection';
+import VideoSection from './VideoSection';
 import GuestListSection from './GuestListSection';
 import BackgroundAudio from './BackgroundAudio';
 import { weddingData } from '../utils/weddingData';
@@ -26,6 +27,7 @@ const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ familyData, onLog
     'itinerary',
     'notes',
     'gifts',
+    'video',
     'guests'
   ];
 
@@ -110,6 +112,9 @@ const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ familyData, onLog
             <GiftRegistrySection />
           )}
           {currentSection === 7 && (
+            <VideoSection />
+          )}
+          {currentSection === 8 && (
             <GuestListSection
               familyData={familyData}
             />
