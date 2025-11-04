@@ -21,8 +21,8 @@ const GiftRegistrySection: React.FC = () => {
     }
   };
 
-  // Placeholder for gift registry link
-  const giftRegistryUrl = ''; // Link will be added later
+  // Liverpool gift registry link
+  const giftRegistryUrl = 'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51815735';
 
   return (
     <div className="min-h-screen flex flex-col items-center p-4">
@@ -58,7 +58,7 @@ const GiftRegistrySection: React.FC = () => {
             {/* Description */}
             <motion.p
               variants={itemVariants}
-              className="text-burgundy text-base leading-relaxed mb-6"
+              className="text-burgundy text-lg leading-relaxed mb-6"
             >
               Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo,
               hemos preparado una mesa de regalos para ti.
@@ -69,20 +69,14 @@ const GiftRegistrySection: React.FC = () => {
               variants={itemVariants}
               className="mt-6"
             >
-              {giftRegistryUrl ? (
-                <a
-                  href={giftRegistryUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-sage-green hover:bg-opacity-90 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  Ver Mesa de Regalos
-                </a>
-              ) : (
-                <div className="text-burgundy text-sm italic opacity-75">
-                  Link próximamente
-                </div>
-              )}
+              <a
+                href={giftRegistryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-sage-green hover:bg-opacity-90 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+              >
+                Mesa de Regalos
+              </a>
             </motion.div>
 
             {/* Decorative Element */}

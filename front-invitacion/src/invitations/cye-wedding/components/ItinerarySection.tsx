@@ -10,20 +10,37 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
   itinerary
 }) => {
   const [currentGroup, setCurrentGroup] = useState(0);
+  const [countdown, setCountdown] = useState(9);
 
-  // Split itinerary into groups of 3
-  const firstGroup = itinerary.slice(0, 3);
-  const secondGroup = itinerary.slice(3, 6);
-  const groups = [firstGroup, secondGroup].filter(group => group.length > 0);
+  // Split itinerary into groups of 2
+  const groups: EventItinerary[][] = [];
+  for (let i = 0; i < itinerary.length; i += 2) {
+    groups.push(itinerary.slice(i, i + 2));
+  }
 
   useEffect(() => {
     if (groups.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setCurrentGroup(prev => (prev + 1) % groups.length);
-    }, 8000); // 5 seconds
+    // Countdown timer (updates every second)
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          return 9; // Reset to 9 when it reaches 0
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-    return () => clearInterval(interval);
+    // Group change timer (every 9 seconds)
+    const groupInterval = setInterval(() => {
+      setCurrentGroup(prev => (prev + 1) % groups.length);
+      setCountdown(9); // Reset countdown when group changes
+    }, 9000);
+
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(groupInterval);
+    };
   }, [groups.length]);
 
   const containerVariants = {
@@ -79,7 +96,7 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
           </div>
 
           {/* Animated Groups */}
-          <div className="h-80 flex items-center justify-center">
+          <div className="h-70 flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentGroup}
@@ -101,11 +118,11 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
                           {getEventIcon(item.event)}
                         </span>
                         <div>
-                          <h4 className="text-lg font-medium text-burgundy leading-tight">
+                          <h4 className="text-xl font-medium text-burgundy leading-tight">
                             {item.event}
                           </h4>
                           {item.description && (
-                            <p className="text-sm text-burgundy opacity-90 leading-tight">
+                            <p className="text-lg text-burgundy opacity-90 leading-tight">
                               {item.description}
                             </p>
                           )}
@@ -120,6 +137,20 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {/* Countdown Timer */}
+          {groups.length > 1 && (
+            <div className="text-center mb-4">
+              <motion.div
+                key={countdown}
+                initial={{ scale: 1.2, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sage-green/20 text-sage-green font-semibold text-lg"
+              >
+                {countdown}
+              </motion.div>
+            </div>
+          )}
 
           {/* Progress indicators */}
           {groups.length > 1 && (

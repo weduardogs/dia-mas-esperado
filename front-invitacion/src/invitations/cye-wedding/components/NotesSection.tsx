@@ -3,18 +3,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const NotesSection: React.FC = () => {
   const [currentGroup, setCurrentGroup] = useState(0);
+  const [countdown, setCountdown] = useState(13);
 
   const notes = [
-    {
-      icon: '👶',
-      title: 'Niños Bienvenidos',
-      description: 'Nos encantaría que los niños nos acompañen en esta celebración tan especial. Contamos contigo para su constante supervisión'
-    },
     {
       icon: '👗',
       title: 'Vestimenta',
       description: 'Formal / Cocktail',
       showColors: true
+    },
+    {
+      icon: '👶',
+      title: 'Niños Bienvenidos',
+      description: 'Nos encantaría que los niños nos acompañen en esta celebración. Contamos contigo para su constante supervisión'
     },
     {
       icon: '⏰',
@@ -28,17 +29,33 @@ const NotesSection: React.FC = () => {
     }
   ];
 
-  // Split notes into groups of 2
-  const firstGroup = notes.slice(0, 2);
-  const secondGroup = notes.slice(2, 4);
-  const groups = [firstGroup, secondGroup];
+  // Custom grouping: Vestimenta (1), Niños (1), Puntualidad + Sorpresas (2)
+  const firstGroup = [notes[0]];  // Vestimenta
+  const secondGroup = [notes[1]]; // Niños Bienvenidos
+  const thirdGroup = [notes[2], notes[3]]; // Puntualidad + Sorpresas
+  const groups = [firstGroup, secondGroup, thirdGroup];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentGroup(prev => (prev + 1) % groups.length);
-    }, 10000); // 
+    // Countdown timer (updates every second)
+    const countdownInterval = setInterval(() => {
+      setCountdown(prev => {
+        if (prev <= 1) {
+          return 9; // Reset to 9 when it reaches 0
+        }
+        return prev - 1;
+      });
+    }, 1000);
 
-    return () => clearInterval(interval);
+    // Group change timer (every 9 seconds)
+    const groupInterval = setInterval(() => {
+      setCurrentGroup(prev => (prev + 1) % groups.length);
+      setCountdown(9); // Reset countdown when group changes
+    }, 9000);
+
+    return () => {
+      clearInterval(countdownInterval);
+      clearInterval(groupInterval);
+    };
   }, [groups.length]);
 
   const containerVariants = {
@@ -86,7 +103,7 @@ const NotesSection: React.FC = () => {
           </div>
 
           {/* Animated Notes Groups */}
-          <div className="min-h-[320px] flex items-center justify-center">
+          <div className="h-70 flex items-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentGroup}
@@ -107,15 +124,15 @@ const NotesSection: React.FC = () => {
                         {note.icon}
                       </span>
                       <div className="flex-1">
-                        <h4 className="text-lg font-medium text-burgundy mb-1">
+                        <h4 className="text-xl font-medium text-burgundy mb-1">
                           {note.title}
                         </h4>
-                        <p className="text-burgundy opacity-90 text-sm leading-relaxed">
+                        <p className="text-burgundy opacity-90 text-lg leading-relaxed">
                           {note.description}
                         </p>
                         {note.showColors && (
                           <div className="mt-3">
-                            <p className="text-burgundy text-xs font-medium mb-2">
+                            <p className="text-burgundy text-lg font-medium mb-2">
                               Colores no permitidos:
                             </p>
                             <div className="flex gap-2">
@@ -139,6 +156,18 @@ const NotesSection: React.FC = () => {
                       </div>
                     </motion.div>
                   ))}
+
+                    {/* Countdown Timer */}
+                    <div className="text-center mb-4">
+                      <motion.div
+                        key={countdown}
+                        initial={{ scale: 1.2, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sage-green/20 text-sage-green font-semibold text-lg"
+                      >
+                        {countdown}
+                      </motion.div>
+                    </div>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -156,17 +185,6 @@ const NotesSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Decorative Element */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.3, scale: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="text-center mt-6"
-          >
-            <div className="text-4xl text-gold-light opacity-90">
-              📝
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </div>

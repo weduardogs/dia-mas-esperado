@@ -27,19 +27,19 @@ export const weddingData: WeddingData = {
       id: "1",
       time: "16:00",
       event: "Ceremonia Religiosa",
-      description: "Iglesia San José"
+      description: "Parroquia de Nuestra Señora de las Nieves"
     },
     {
       id: "2", 
       time: "18:00",
       event: "Cocktail de Bienvenida",
-      description: "Salón Los Jardines"
+      description: "La Cava"
     },
     {
       id: "3",
       time: "19:30",
       event: "Cena",
-      description: "Salón Los Jardines"
+      description: "La Cava"
     },
     {
       id: "4",

@@ -9,7 +9,7 @@ interface GuestListSectionProps {
 const GuestListSection: React.FC<GuestListSectionProps> = ({
   familyData
 }) => {
-  const whatsappNumber = "5215512345678"; // Número de WhatsApp de los novios
+  const whatsappNumber = "5215566932970"; // Número de WhatsApp de los novios
   const whatsappMessage = `¡Hola! Soy ${familyData.familyName}. Confirmo mi asistencia a la boda de Eduardo y Cecilia el 14 de Febrero. ¡No puedo esperar a celebrar con ustedes! 💕`;
 
   const handleWhatsAppClick = () => {
@@ -61,7 +61,7 @@ const GuestListSection: React.FC<GuestListSectionProps> = ({
 
             {/* Main Message */}
             <motion.div variants={itemVariants} className="mb-6">
-              <p className="text-burgundy text-base leading-relaxed">
+              <p className="text-burgundy text-lg leading-relaxed">
                 Para confirmar tu asistencia a nuestra boda, por favor envíanos un mensaje por WhatsApp.
               </p>
             </motion.div>
@@ -81,7 +81,7 @@ const GuestListSection: React.FC<GuestListSectionProps> = ({
 
             {/* Additional Info */}
             <motion.div variants={itemVariants} className="bg-white bg-opacity-20 rounded-lg p-3">
-              <p className="text-burgundy text-sm opacity-90">
+              <p className="text-burgundy text-m opacity-90">
                 <span className="font-medium">💌 Importante:</span> Tu confirmación nos ayuda a organizar mejor este día especial
               </p>
             </motion.div>
