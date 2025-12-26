@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '../i18n/useTranslation';
 
 const GiftRegistrySection: React.FC = () => {
+  const { t } = useTranslation();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,7 +46,7 @@ const GiftRegistrySection: React.FC = () => {
               variants={itemVariants}
               className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-4"
             >
-              Mesa de Regalos
+              {t('gifts', 'title')}
             </motion.h3>
 
             {/* Gift Icon */}
@@ -60,8 +62,7 @@ const GiftRegistrySection: React.FC = () => {
               variants={itemVariants}
               className="text-burgundy text-lg leading-relaxed mb-6"
             >
-              Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo,
-              hemos preparado una mesa de regalos para ti.
+              {t('gifts', 'description')}
             </motion.p>
 
             {/* Gift Registry Button - Will be enabled when URL is added */}
@@ -75,7 +76,7 @@ const GiftRegistrySection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-block bg-sage-green hover:bg-opacity-90 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
               >
-                Mesa de Regalos
+                {t('gifts', 'button')}
               </a>
             </motion.div>
 

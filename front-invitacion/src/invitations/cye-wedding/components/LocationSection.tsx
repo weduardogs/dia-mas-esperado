@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Location } from '../../../types';
+import { useTranslation } from '../i18n/useTranslation';
 
 interface LocationSectionProps {
   location: Location;
-  title: string;
+  type: 'ceremony' | 'reception';
 }
 
-const LocationSection: React.FC<LocationSectionProps> = ({ 
-  location, 
-  title 
+const LocationSection: React.FC<LocationSectionProps> = ({
+  location,
+  type
 }) => {
+  const { t } = useTranslation();
   const [mapLoaded, setMapLoaded] = useState(false);
+
+  const title = type === 'ceremony' ? t('location', 'ceremonyTitle') : t('location', 'receptionTitle');
+  const time = type === 'ceremony' ? '15:30' : '17:30';
 
   const handleMapLoad = () => {
     setMapLoaded(true);
@@ -28,9 +33,16 @@ const LocationSection: React.FC<LocationSectionProps> = ({
           className="bg-white/50 rounded-lg p-8 w-full max-w-md mx-4 shadow-lg"
         >
 
+          {/* Section Title */}
+          <div className="text-center mb-4">
+            <h2 className="text-3xl font-raleway font-semibold text-burgundy">
+              {title}
+            </h2>
+          </div>
+
           {/* Location Name */}
           <div className="text-center">
-            <h3 className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-2">
+            <h3 className="text-2xl font-elegant font-bold text-sage-green mb-2">
               {location.name}
             </h3>
           </div>
@@ -41,7 +53,7 @@ const LocationSection: React.FC<LocationSectionProps> = ({
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
             </svg>
             <div className="text-center">
-              <p className="text-burgundy font-medium text-lg">{title === "Ceremonia Religiosa" ? "4:00 PM" : "6:00 PM"}</p>
+              <p className="text-burgundy font-medium text-lg">{time}</p>
             </div>
           </div>
 
@@ -51,11 +63,11 @@ const LocationSection: React.FC<LocationSectionProps> = ({
             <div className="relative h-64 rounded-lg overflow-hidden bg-black bg-opacity-50 mb-4 mt-2">
               {!mapLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-gold-light text-lg">Cargando mapa...</div>
+                  <div className="text-gold-light text-lg">{t('location', 'loadingMap')}</div>
                 </div>
               )}
-              
-              {title === "Ceremonia Religiosa" ? (
+
+              {type === 'ceremony' ? (
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d931.7074795110356!2d-98.98818460485866!3d19.372807064554888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1e2eafe4ae79f%3A0x7372b48e3a4b9089!2sParroquia%20de%20Nuestra%20Se%C3%B1ora%20de%20las%20Nieves!5e0!3m2!1ses-419!2smx!4v1754956610460!5m2!1ses-419!2smx"
                   width="100%" 

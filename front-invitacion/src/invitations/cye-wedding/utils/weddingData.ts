@@ -7,7 +7,7 @@ export const cyeWeddingConfig = {
 export const weddingData: WeddingData = {
   groomName: "Eduardo",
   brideName: "Cecilia", 
-  weddingDate: "14 de Febrero, 2025",
+  weddingDate: "14 de Febrero, 2026",
   church: {
     name: "Parroquia de Nuestra Señora de las Nieves",
     address: "Calle José María Morelos 138, Loma Bonita, 57940 Cdad. Nezahualcóyotl, Méx.",
@@ -25,19 +25,19 @@ export const weddingData: WeddingData = {
   itinerary: [
     {
       id: "1",
-      time: "16:00",
+      time: "15:30",
       event: "Ceremonia Religiosa",
       description: "Parroquia de Nuestra Señora de las Nieves"
     },
     {
       id: "2", 
-      time: "18:00",
+      time: "17:30",
       event: "Cocktail de Bienvenida",
       description: "La Cava"
     },
     {
       id: "3",
-      time: "19:30",
+      time: "18:30",
       event: "Cena",
       description: "La Cava"
     },

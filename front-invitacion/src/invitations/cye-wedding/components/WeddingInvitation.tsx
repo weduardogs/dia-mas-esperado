@@ -12,6 +12,7 @@ import GuestListSection from './GuestListSection';
 import BackgroundAudio from './BackgroundAudio';
 import { weddingData } from '../utils/weddingData';
 import { useScrollNavigation } from '../hooks/useScrollNavigation';
+import { useTranslation } from '../i18n/useTranslation';
 
 interface WeddingInvitationProps {
   familyData: FamilyData;
@@ -19,6 +20,7 @@ interface WeddingInvitationProps {
 }
 
 const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ familyData, onLogout }) => {
+  const { t } = useTranslation();
   const sections = [
     'cover',
     'animation',
@@ -60,7 +62,7 @@ const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ familyData, onLog
           onClick={onLogout}
           className="bg-sage-green text-light-text hover:bg-opacity-80 transition-colors text-sm px-3 py-2 rounded"
         >
-          Salir
+          {t('common', 'logout')}
         </button>
       </div>
 
@@ -89,15 +91,15 @@ const WeddingInvitation: React.FC<WeddingInvitationProps> = ({ familyData, onLog
             <CoupleAnimation onNext={scrollToNext} />
           )}
           {currentSection === 2 && (
-            <LocationSection 
+            <LocationSection
               location={weddingData.church}
-              title="Ceremonia Religiosa"
+              type="ceremony"
             />
           )}
           {currentSection === 3 && (
-            <LocationSection 
+            <LocationSection
               location={weddingData.reception}
-              title="Recepción"
+              type="reception"
             />
           )}
           {currentSection === 4 && (

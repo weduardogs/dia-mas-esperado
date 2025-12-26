@@ -1,27 +1,162 @@
 [
   {
-    "password": "familia2024",
-    "familyName": "Familia García",
-    "personalMessage": "Querida familia García, nos llena de alegría tenerlos en este día especial."
-  },
-  {
     "password": "amigos2024",
     "familyName": "Amigos Queridos",
     "personalMessage": "Queridos amigos, su amistad es un regalo que atesoramos."
   },
   {
-    "password": "ejemplo3",
-    "familyName": "Familia Ejemplo 3",
-    "personalMessage": "Tu mensaje personalizado aquí."
+    "password": "famlopez1",
+    "familyName": "Familia López",
+    "personalMessage": "Querida familia López, atesoramos mucho su amor y compañía. ¡Nos encantaría contar con ustedes!"
   },
   {
-    "password": "ejemplo4",
-    "familyName": "Familia Ejemplo 4",
-    "personalMessage": "Tu mensaje personalizado aquí."
+    "password": "famlopez2",
+    "familyName": "Familia López",
+    "personalMessage": "Querida familia López, atesoramos mucho su amor y compañía. ¡Nos encantaría contar con ustedes!"
   },
   {
-    "password": "ejemplo5",
-    "familyName": "Familia Ejemplo 5",
-    "personalMessage": "Tu mensaje personalizado aquí."
+    "password": "verobarb1",
+    "familyName": "Vero y Barbie",
+    "personalMessage": "Queridas Vero y Barbie, atesoramos mucho su amor y compañía. ¡Nos encantaría contar con ustedes!"
+  },
+  {
+    "password": "vallebel1",
+    "familyName": "Famila Valle Beltrán",
+    "personalMessage": "Querida famila Valle Beltrán, su compañía es muy importante para nosotros. ¡Nos encantaría contar con ustedes!"
+  },
+  {
+    "password": "guarnerosso1",
+    "familyName": "Famila Guarneros",
+    "personalMessage": "Queridas familia Guarneros Solano, atesoramos mucho su amor y compañía. ¡Nos encantaría contar con ustedes!"
+  },
+  {
+    "password": "fernavro1",
+    "familyName": "Fernando Navarro Rosales",
+    "personalMessage": "Querido Fer, tu compañía es muy importante para nosotros. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "alegl1",
+    "familyName": "Alejandra Guarneros López",
+    "personalMessage": "Querida Ale, su compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "pguarneros1",
+    "familyName": "Familia P. Guarneros",
+    "personalMessage": "Querida familia, su compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "elsagl1",
+    "familyName": "Elsa Guarneros López",
+    "personalMessage": "Querida Elsa, su compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "marilo1",
+    "familyName": "María López Vázquez",
+    "personalMessage": "Querida Mari, su compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "guarnerosc1",
+    "familyName": "Familia Guarneros C.",
+    "personalMessage": "Querida familia, su compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "ladis1",
+    "familyName": "Ladislao y familia",
+    "personalMessage": "Queridos Ladis y compañía. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigosjj",
+    "familyName": "José y Javier",
+    "personalMessage": "Queridos José y Javier. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "fammartel1",
+    "familyName": "Familia Martel Garcia",
+    "personalMessage": "Querida familia Martel Garcia. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "fammartel2",
+    "familyName": "Familia Martel",
+    "personalMessage": "Queridos Brian y familia. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "famsolano1",
+    "familyName": "Familia Solano",
+    "personalMessage": "Querida familia Solano. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "famsolanop2",
+    "familyName": "Familia Solano Pizano",
+    "personalMessage": "Querida familia Solano Pizano. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "diegosc1",
+    "familyName": "Diego Solano Contreras",
+    "personalMessage": "Querido Diego, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "famsolanor1",
+    "familyName": "Alberto y familia",
+    "personalMessage": "Queridos Alberto y familia. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "bernardo12",
+    "familyName": "Bernardo y Compañía",
+    "personalMessage": "Queridos Bernardo y compañía. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "beredf1",
+    "familyName": "Berenice y Compañía",
+    "personalMessage": "Querida Bere. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "famsolano3",
+    "familyName": "Luis Solano y famiia",
+    "personalMessage": "Queridos Luis Solano y familia. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigochino",
+    "familyName": "Ernesto y Karen",
+    "personalMessage": "Queridos Ernesto y Karen. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigoeliseo",
+    "familyName": "Eliseo Medina",
+    "personalMessage": "Querido Eliseo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "amigosnc",
+    "familyName": "Naty y Carlos",
+    "personalMessage": "Queridos Naty y Carlos. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigossd",
+    "familyName": "Saúl y Delia",
+    "personalMessage": "Queridos Saúl y Delia. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigosab",
+    "familyName": "Ángel y Brenda",
+    "personalMessage": "Queridos Ángel y Brenda. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "aldo1",
+    "familyName": "Aldo",
+    "personalMessage": "Querido Aldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "oswaldo",
+    "familyName": "Oswaldo",
+    "personalMessage": "Querido Oswaldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "marce1",
+    "familyName": "Marce Solano",
+    "personalMessage": "Querida Marce, tu compañía es muy importante para nosotros. ¡Nos encantaría contar con su presensia!"
+  },
+  {
+    "password": "barojasfam",
+    "familyName": "Ernie and Family",
+    "personalMessage": "Dear family, your presence means a great deal to us. We would be delighted to have you join us!"
   }
 ]

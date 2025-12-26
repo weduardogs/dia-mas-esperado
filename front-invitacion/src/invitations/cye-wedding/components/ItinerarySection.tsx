@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EventItinerary } from '../../../types';
+import { useTranslation } from '../i18n/useTranslation';
 
 interface ItinerarySectionProps {
   itinerary: EventItinerary[];
@@ -9,13 +10,41 @@ interface ItinerarySectionProps {
 const ItinerarySection: React.FC<ItinerarySectionProps> = ({
   itinerary
 }) => {
+  const { t } = useTranslation();
   const [currentGroup, setCurrentGroup] = useState(0);
   const [countdown, setCountdown] = useState(9);
 
+  // Translate event names
+  const translatedItinerary = itinerary.map(item => ({
+    ...item,
+    event: getTranslatedEvent(item.id),
+    description: getTranslatedDescription(item.id)
+  }));
+
+  function getTranslatedEvent(id: string): string {
+    switch(id) {
+      case '1': return t('itinerary', 'ceremony');
+      case '2': return t('itinerary', 'cocktail');
+      case '3': return t('itinerary', 'dinner');
+      case '4': return t('itinerary', 'dance');
+      default: return '';
+    }
+  }
+
+  function getTranslatedDescription(id: string): string {
+    switch(id) {
+      case '1': return t('itinerary', 'ceremonyLocation');
+      case '2': return t('itinerary', 'cocktailLocation');
+      case '3': return t('itinerary', 'dinnerLocation');
+      case '4': return t('itinerary', 'danceDescription');
+      default: return '';
+    }
+  }
+
   // Split itinerary into groups of 2
   const groups: EventItinerary[][] = [];
-  for (let i = 0; i < itinerary.length; i += 2) {
-    groups.push(itinerary.slice(i, i + 2));
+  for (let i = 0; i < translatedItinerary.length; i += 2) {
+    groups.push(translatedItinerary.slice(i, i + 2));
   }
 
   useEffect(() => {
@@ -91,7 +120,7 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
           {/* Title */}
           <div className="text-center mb-6">
             <h3 className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-2">
-              Programa del día
+              {t('itinerary', 'title')}
             </h3>
           </div>
 

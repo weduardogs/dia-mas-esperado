@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FamilyData } from '../../../types';
+import { useTranslation } from '../i18n/useTranslation';
+import LanguageSelector from './LanguageSelector';
 
 interface LoginProps {
   onLogin: (familyData: FamilyData) => void;
 }
 
 const Login: React.FC<LoginProps> = ({ onLogin }) => {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +54,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         onLogin(familyData);
       } else {
         console.log('❌ Password no encontrado');
-        setError('Contraseña incorrecta. Por favor, intenta nuevamente.');
+        setError(t('login', 'errorMessage'));
       }
       setIsLoading(false);
     }, 800);
@@ -70,6 +73,9 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         transition={{ delay: 0.2, duration: 0.6 }}
         className="bg-white/50 rounded-lg p-8 w-full max-w-md mx-4 shadow-lg"
       >
+        {/* Language Selector */}
+        <LanguageSelector />
+
         <div className="text-center mb-8">
           <motion.p
             initial={{ y: 20, opacity: 0 }}
@@ -77,7 +83,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             transition={{ delay: 0.6, duration: 0.5 }}
             className="text-4xl md:text-5xl font-parisienne text-sage-green mb-2"
           >
-            Nuestra Invitación Especial
+            {t('login', 'title')}
           </motion.p>
         </div>
 
@@ -87,11 +93,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
           >
-            <label 
-              htmlFor="password" 
+            <label
+              htmlFor="password"
               className="block text-sm font-medium font-raleway text-burgundy mb-2"
             >
-              Código de Acceso
+              {t('login', 'accessCodeLabel')}
             </label>
             <input
               type="password"
@@ -99,7 +105,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 bg-off-white border border-sage-green rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent text-black placeholder-gray-500 transition-all duration-200"
-              placeholder="Ingresa tu código de familia"
+              placeholder={t('login', 'accessCodePlaceholder')}
               required
               disabled={isLoading}
             />
@@ -129,10 +135,10 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Verificando...
+                {t('login', 'verifying')}
               </span>
             ) : (
-              'Acceder a la Invitación'
+              t('login', 'submitButton')
             )}
           </motion.button>
         </form>
@@ -143,7 +149,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           transition={{ delay: 1.2, duration: 0.5 }}
           className="text-center mt-6 text-sm font-raleway text-burgundy opacity-75"
         >
-          Si no tienes tu código, contacta a los novios
+          {t('login', 'helpText')}
         </motion.div>
       </motion.div>
     </motion.div>

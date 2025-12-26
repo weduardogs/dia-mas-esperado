@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '../i18n/useTranslation';
 
 const VideoSection: React.FC = () => {
+  const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoAspectRatio, setVideoAspectRatio] = useState<number>(16/9); // Default horizontal
 
@@ -85,7 +87,7 @@ const VideoSection: React.FC = () => {
           preload="auto"
         >
           <source src="/CYE.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
+          {t('video', 'unsupported')}
         </video>
       </motion.div>
     </div>

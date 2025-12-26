@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '../i18n/useTranslation';
 
 const NotesSection: React.FC = () => {
+  const { t } = useTranslation();
   const [currentGroup, setCurrentGroup] = useState(0);
-  const [countdown, setCountdown] = useState(13);
+  const [countdown, setCountdown] = useState(9);
 
   const notes = [
     {
       icon: '👗',
-      title: 'Vestimenta',
-      description: 'Formal / Cocktail',
+      title: t('notes', 'dressCodeTitle'),
+      description: t('notes', 'dressCodeDescription'),
       showColors: true
     },
     {
       icon: '👶',
-      title: 'Niños Bienvenidos',
-      description: 'Nos encantaría que los niños nos acompañen en esta celebración. Contamos contigo para su constante supervisión'
+      title: t('notes', 'childrenTitle'),
+      description: t('notes', 'childrenDescription')
     },
     {
       icon: '⏰',
-      title: 'Puntualidad',
-      description: 'Llegar 15 min antes de la ceremonia'
+      title: t('notes', 'punctualityTitle'),
+      description: t('notes', 'punctualityDescription')
     },
     {
       icon: '🎉',
-      title: 'Sorpresas',
-      description: '¡Y muchas más durante la celebración!'
+      title: t('notes', 'surprisesTitle'),
+      description: t('notes', 'surprisesDescription')
     }
   ];
 
@@ -98,7 +100,7 @@ const NotesSection: React.FC = () => {
           {/* Title */}
           <div className="text-center mb-6">
             <h3 className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-2">
-              Notas Importantes
+              {t('notes', 'title')}
             </h3>
           </div>
 
@@ -133,23 +135,32 @@ const NotesSection: React.FC = () => {
                         {note.showColors && (
                           <div className="mt-3">
                             <p className="text-burgundy text-lg font-medium mb-2">
-                              Colores no permitidos:
+                              {t('notes', 'forbiddenColors')}
                             </p>
-                            <div className="flex gap-2">
-                              <div
-                                className="w-8 h-8 rounded-full border-2 border-gray-300 bg-white shadow-sm"
-                                title="Blanco"
-                              />
-                              <div
-                                className="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
-                                style={{ backgroundColor: '#CFB997' }}
-                                title="Beige"
-                              />
-                              <div
-                                className="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
-                                style={{ backgroundColor: '#A9BA9D' }}
-                                title="Verde"
-                              />
+                            <div className="flex gap-4">
+                              <div className="flex flex-col items-center gap-1">
+                                <div
+                                  className="w-8 h-8 rounded-full border-2 border-gray-300 bg-white shadow-sm"
+                                  title={t('notes', 'white')}
+                                />
+                                <span className="text-burgundy text-xs">{t('notes', 'white')}</span>
+                              </div>
+                              <div className="flex flex-col items-center gap-1">
+                                <div
+                                  className="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
+                                  style={{ backgroundColor: '#CFB997' }}
+                                  title={t('notes', 'beige')}
+                                />
+                                <span className="text-burgundy text-xs">{t('notes', 'beige')}</span>
+                              </div>
+                              <div className="flex flex-col items-center gap-1">
+                                <div
+                                  className="w-8 h-8 rounded-full border-2 border-gray-300 shadow-sm"
+                                  style={{ backgroundColor: '#A9BA9D' }}
+                                  title={t('notes', 'green')}
+                                />
+                                <span className="text-burgundy text-xs">{t('notes', 'green')}</span>
+                              </div>
                             </div>
                           </div>
                         )}

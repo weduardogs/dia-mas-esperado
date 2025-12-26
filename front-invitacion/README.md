@@ -135,7 +135,8 @@ The invitation is organized in progressive sections:
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start development server with hot reload |
-| `npm run build` | Create production build |
+| `
+ | Create production build |
 | `npm run preview` | Preview production build locally |
 | `npm run type-check` | Run TypeScript type checking |
 | `npm run lint` | Run ESLint code analysis |

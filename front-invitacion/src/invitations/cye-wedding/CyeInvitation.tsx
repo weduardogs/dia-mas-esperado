@@ -5,6 +5,7 @@ import WeddingInvitation from './components/WeddingInvitation';
 import MobileGuard from './components/MobileGuard';
 import { FamilyData } from '../../types';
 import { cyeWeddingConfig } from './utils/weddingData';
+import { LanguageProvider } from './i18n/LanguageContext';
 
 const CyeInvitation: React.FC = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -58,23 +59,25 @@ const CyeInvitation: React.FC = () => {
   }
 
   return (
-    <MobileGuard mobileOnly={cyeWeddingConfig.mobileOnly}>
-      <div className="min-h-screen bg-wedding">
-        <div className="min-h-screen bg-black bg-opacity-20">
-          <AnimatePresence mode="wait">
-            {!isAuthenticated ? (
-              <Login key="login" onLogin={handleLogin} />
-            ) : (
-              <WeddingInvitation
-                key="invitation"
-                familyData={familyData!}
-                onLogout={handleLogout}
-              />
-            )}
-          </AnimatePresence>
+    <LanguageProvider>
+      <MobileGuard mobileOnly={cyeWeddingConfig.mobileOnly}>
+        <div className="min-h-screen bg-wedding">
+          <div className="min-h-screen bg-black bg-opacity-20">
+            <AnimatePresence mode="wait">
+              {!isAuthenticated ? (
+                <Login key="login" onLogin={handleLogin} />
+              ) : (
+                <WeddingInvitation
+                  key="invitation"
+                  familyData={familyData!}
+                  onLogout={handleLogout}
+                />
+              )}
+            </AnimatePresence>
+          </div>
         </div>
-      </div>
-    </MobileGuard>
+      </MobileGuard>
+    </LanguageProvider>
   );
 };
 
