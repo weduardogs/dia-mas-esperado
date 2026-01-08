@@ -158,5 +158,30 @@
     "password": "barojasfam",
     "familyName": "Ernie and Family",
     "personalMessage": "Dear family, your presence means a great deal to us. We would be delighted to have you join us!"
+  },
+  {
+    "password": "alfred1",
+    "familyName": "Alfredo y Karina",
+    "personalMessage": "Queridos Alfredo y Karina. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "rocio1",
+    "familyName": "Rocío Espinosa",
+    "personalMessage": "Querida Rocío, nos complace invitarte a nuestra boda."
+  },
+  {
+    "password": "paola1",
+    "familyName": "Paola Mejía",
+    "personalMessage": "Querida Paola, nos complace invitarte a nuestra boda."
+  },
+  {
+    "password": "alex1",
+    "familyName": "Alejandro Gutiérrez",
+    "personalMessage": "Querido Alejandro, nos complace invitarte a nuestra boda."
+  },
+  {
+    "password": "oscar1",
+    "familyName": "Oscar y Osvaldo",
+    "personalMessage": "Queridos Oscar y Osvaldo. Nos complace invitarlos a nuestra boda."
   }
 ]
