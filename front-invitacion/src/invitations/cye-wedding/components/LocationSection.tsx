@@ -23,47 +23,44 @@ const LocationSection: React.FC<LocationSectionProps> = ({
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center text-center p-4">
-      <div className="mobile-content-container mobile-safe-area md:contents">
+    <section className="w-full flex flex-col items-center text-center py-8 px-4 mobile-safe-area">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+        className="glass-card rounded-3xl p-8 w-full max-w-md"
+      >
+        {/* Section Title */}
+        <div className="text-center mb-6">
+          <h2 className="text-4xl font-raleway font-semibold text-burgundy tracking-wide">
+            {title}
+          </h2>
+        </div>
 
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="bg-white/50 rounded-lg p-8 w-full max-w-md mx-4 shadow-lg"
-        >
+        {/* Location Name */}
+        <div className="text-center mb-4">
+          <h3 className="text-3xl font-elegant font-bold text-sage-green mb-2 text-enhanced-shadow">
+            {location.name}
+          </h3>
+        </div>
 
-          {/* Section Title */}
-          <div className="text-center mb-4">
-            <h2 className="text-3xl font-raleway font-semibold text-burgundy">
-              {title}
-            </h2>
-          </div>
-
-          {/* Location Name */}
+        {/* Time */}
+        <div className="flex items-center justify-center space-x-3 mb-6">
+          <svg className="w-7 h-7 text-burgundy flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+          </svg>
           <div className="text-center">
-            <h3 className="text-2xl font-elegant font-bold text-sage-green mb-2">
-              {location.name}
-            </h3>
+            <p className="text-burgundy font-semibold text-xl tracking-wide">{time}</p>
           </div>
+        </div>
 
-          {/* Time */}
-          <div className="flex items-start justify-center space-x-3">
-            <svg className="w-6 h-6 text-burgundy mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-            </svg>
-            <div className="text-center">
-              <p className="text-burgundy font-medium text-lg">{time}</p>
-            </div>
-          </div>
-
-          {/* Google Map */}
-          <div>
-            
-            <div className="relative h-64 rounded-lg overflow-hidden bg-black bg-opacity-50 mb-4 mt-2">
+        {/* Google Map */}
+        <div>
+            <div className="relative h-64 rounded-2xl overflow-hidden bg-black bg-opacity-50 shadow-lg ring-1 ring-white/20">
               {!mapLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-gold-light text-lg">{t('location', 'loadingMap')}</div>
+                  <div className="text-gold-light text-lg animate-pulse">{t('location', 'loadingMap')}</div>
                 </div>
               )}
 
@@ -89,15 +86,15 @@ const LocationSection: React.FC<LocationSectionProps> = ({
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
                   onLoad={handleMapLoad}
-                  className={mapLoaded ? 'opacity-100' : 'opacity-0'}
+                  className={`smooth-transition ${mapLoaded ? 'opacity-100' : 'opacity-0'}`}
                 />
               )}
-              
+
               {/* Fallback Static Map */}
-              <div 
-                className={`absolute inset-0 bg-gradient-to-br from-gold-dark to-gold-light opacity-20 flex items-center justify-center ${mapLoaded ? 'hidden' : 'block'}`}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br from-gold-dark to-gold-light opacity-20 flex items-center justify-center smooth-transition ${mapLoaded ? 'hidden' : 'block'}`}
               >
-                <div className="text-center">
+                <div className="text-center animate-pulse">
                   <svg className="w-12 h-12 text-sage-green mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
@@ -107,10 +104,9 @@ const LocationSection: React.FC<LocationSectionProps> = ({
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+        </div>
+      </motion.div>
+    </section>
   );
 };
 

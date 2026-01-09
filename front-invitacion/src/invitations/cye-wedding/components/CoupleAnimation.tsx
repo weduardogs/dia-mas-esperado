@@ -69,12 +69,13 @@ const CoupleAnimation: React.FC<CoupleAnimationProps> = () => {
   }, []);
 
   return (
-    <div className="h-[70vh] w-full flex items-center justify-center overflow-hidden bg-gradient-to-b from-sage-green/20 via-transparent to-burgundy/20">
+    <section className="w-full flex flex-col items-center py-8 px-4 mobile-safe-area">
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full h-full flex items-center justify-center"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+        className="w-full max-w-md h-[70vh] flex items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-b from-sage-green/20 via-transparent to-burgundy/20"
       >
         <video
           ref={videoRef}
@@ -92,7 +93,7 @@ const CoupleAnimation: React.FC<CoupleAnimationProps> = () => {
           Tu navegador no soporta la reproducción de video.
         </video>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

@@ -68,20 +68,21 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       className="min-h-screen flex items-center justify-center p-4"
     >
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
-        className="bg-white/50 rounded-lg p-8 w-full max-w-md mx-4 shadow-lg"
+        initial={{ y: 50, opacity: 0, scale: 0.95 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        transition={{ delay: 0.2, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+        className="glass-card rounded-2xl p-8 w-full max-w-md mx-4"
       >
         {/* Language Selector */}
         <LanguageSelector />
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-10">
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="text-4xl md:text-5xl font-parisienne text-sage-green mb-2"
+            className="text-5xl md:text-6xl font-parisienne text-sage-green mb-2 text-enhanced-shadow"
+            style={{ letterSpacing: '0.02em' }}
           >
             {t('login', 'title')}
           </motion.p>
@@ -104,7 +105,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-off-white border border-sage-green rounded-lg focus:ring-2 focus:ring-sage-green focus:border-transparent text-black placeholder-gray-500 transition-all duration-200"
+              className="w-full px-5 py-3.5 bg-off-white border-2 border-sage-green/30 rounded-xl focus:ring-2 focus:ring-sage-green/50 focus:border-sage-green focus:outline-none text-black placeholder-gray-400 smooth-transition shadow-sm focus:shadow-md"
               placeholder={t('login', 'accessCodePlaceholder')}
               required
               disabled={isLoading}
@@ -125,9 +126,11 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 1, duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={isLoading}
-            className="w-full bg-sage-green hover:bg-opacity-80 text-off-white font-raleway font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:transform-none"
+            className="w-full bg-sage-green hover:bg-opacity-90 text-off-white font-raleway font-semibold py-4 px-6 rounded-xl btn-elegant disabled:opacity-50 disabled:transform-none tracking-wide"
           >
             {isLoading ? (
               <span className="flex items-center justify-center">

@@ -1,3 +1,15 @@
+/**
+ * @deprecated This hook is no longer used after migrating to continuous scroll layout.
+ * Kept for reference but can be safely removed in future cleanup.
+ *
+ * Previous behavior: Handled fullpage-style navigation with discrete sections using
+ * touch/wheel events and keyboard navigation.
+ *
+ * New behavior: Native scroll with stacked sections and whileInView animations.
+ * See WeddingInvitation.tsx for the new implementation.
+ *
+ * Migration date: 2026-01-08
+ */
 import { useState, useEffect, useCallback } from 'react';
 
 interface UseScrollNavigationProps {

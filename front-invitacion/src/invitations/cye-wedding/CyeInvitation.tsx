@@ -46,13 +46,23 @@ const CyeInvitation: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-wedding flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-gold text-2xl font-elegant"
+          transition={{ duration: 0.5 }}
+          className="glass-card rounded-3xl p-10 text-center"
         >
-          Cargando...
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+            className="text-gold text-5xl font-elegant mb-4"
+          >
+            ⚘
+          </motion.div>
+          <p className="text-gold text-2xl font-elegant text-enhanced-shadow tracking-wide">
+            Cargando...
+          </p>
         </motion.div>
       </div>
     );
@@ -61,20 +71,18 @@ const CyeInvitation: React.FC = () => {
   return (
     <LanguageProvider>
       <MobileGuard mobileOnly={cyeWeddingConfig.mobileOnly}>
-        <div className="min-h-screen bg-wedding">
-          <div className="min-h-screen bg-black bg-opacity-20">
-            <AnimatePresence mode="wait">
-              {!isAuthenticated ? (
-                <Login key="login" onLogin={handleLogin} />
-              ) : (
-                <WeddingInvitation
-                  key="invitation"
-                  familyData={familyData!}
-                  onLogout={handleLogout}
-                />
-              )}
-            </AnimatePresence>
-          </div>
+        <div className="min-h-screen">
+          <AnimatePresence mode="wait">
+            {!isAuthenticated ? (
+              <Login key="login" onLogin={handleLogin} />
+            ) : (
+              <WeddingInvitation
+                key="invitation"
+                familyData={familyData!}
+                onLogout={handleLogout}
+              />
+            )}
+          </AnimatePresence>
         </div>
       </MobileGuard>
     </LanguageProvider>

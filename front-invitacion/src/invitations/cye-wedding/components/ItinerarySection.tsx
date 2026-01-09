@@ -109,20 +109,20 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-4">
-      <div className="mobile-content-container mobile-safe-area md:contents">
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="bg-white/50 rounded-lg p-7 w-full max-w-md mx-4 shadow-lg"
-        >
-          {/* Title */}
-          <div className="text-center mb-6">
-            <h3 className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-2">
-              {t('itinerary', 'title')}
-            </h3>
-          </div>
+    <section className="w-full flex flex-col items-center py-8 px-4 mobile-safe-area">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+        className="glass-card rounded-3xl p-8 w-full max-w-md"
+      >
+        {/* Title */}
+        <div className="text-center mb-8">
+          <h3 className="text-4xl md:text-3xl font-elegant font-bold text-sage-green mb-2 text-enhanced-shadow tracking-wide">
+            {t('itinerary', 'title')}
+          </h3>
+        </div>
 
           {/* Animated Groups */}
           <div className="h-70 flex items-center">
@@ -140,24 +140,24 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
                     <motion.div
                       key={item.id}
                       variants={itemVariants}
-                      className="flex items-center justify-between py-4 px-4 bg-white bg-opacity-20 rounded-lg"
+                      className="flex items-center justify-between py-5 px-5 bg-white bg-opacity-25 rounded-2xl backdrop-blur-sm shadow-sm hover:shadow-md smooth-transition"
                     >
-                      <div className="flex items-center space-x-3">
-                        <span className="text-2xl" role="img" aria-label="event-icon">
+                      <div className="flex items-center space-x-4">
+                        <span className="text-3xl animate-float" role="img" aria-label="event-icon">
                           {getEventIcon(item.event)}
                         </span>
                         <div>
-                          <h4 className="text-xl font-medium text-burgundy leading-tight">
+                          <h4 className="text-xl font-semibold text-burgundy leading-tight tracking-wide">
                             {item.event}
                           </h4>
                           {item.description && (
-                            <p className="text-lg text-burgundy opacity-90 leading-tight">
+                            <p className="text-base text-burgundy opacity-90 leading-tight mt-0.5">
                               {item.description}
                             </p>
                           )}
                         </div>
                       </div>
-                      <div className="text-burgundy font-semibold text-lg text-right ml-2">
+                      <div className="text-burgundy font-bold text-lg text-right ml-3 tracking-wide">
                         {item.time}
                       </div>
                     </motion.div>
@@ -172,9 +172,9 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
             <div className="text-center mb-4">
               <motion.div
                 key={countdown}
-                initial={{ scale: 1.2, opacity: 0 }}
+                initial={{ scale: 1.3, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-sage-green/20 text-sage-green font-semibold text-lg"
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-sage-green/25 text-sage-green font-bold text-xl shadow-sm"
               >
                 {countdown}
               </motion.div>
@@ -183,20 +183,22 @@ const ItinerarySection: React.FC<ItinerarySectionProps> = ({
 
           {/* Progress indicators */}
           {groups.length > 1 && (
-            <div className="flex justify-center space-x-2 mt-4">
+            <div className="flex justify-center space-x-3 mt-6">
               {groups.map((_, index) => (
-                <div
+                <motion.div
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index === currentGroup ? 'bg-sage-green' : 'bg-sage-green opacity-30'
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.1 * index }}
+                  className={`w-2.5 h-2.5 rounded-full smooth-transition shadow-sm ${
+                    index === currentGroup ? 'bg-sage-green scale-125' : 'bg-sage-green/40'
                   }`}
                 />
               ))}
             </div>
           )}
-        </motion.div>
-      </div>
-    </div>
+      </motion.div>
+    </section>
   );
 };
 
