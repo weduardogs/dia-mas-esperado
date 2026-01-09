@@ -183,5 +183,35 @@
     "password": "oscar1",
     "familyName": "Oscar y Osvaldo",
     "personalMessage": "Queridos Oscar y Osvaldo. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "amigosc1",
+    "familyName": "Famila Reynoso Reyes",
+    "personalMessage": "Querida famila Reynoso Reyes ¡Nos encantaría contar con ustedes!"
+  },
+  {
+    "password": "amigosc2",
+    "familyName": "Famila Moreno Cortés",
+    "personalMessage": "Querida famila Moreno Cortés ¡Nos encantaría contar con ustedes!"
+  },
+  {
+    "password": "oswaldo1",
+    "familyName": "Oswaldo",
+    "personalMessage": "Querido Oswaldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "carmenmtz",
+    "familyName": "Carmen Martinez",
+    "personalMessage": "Querida Carmen, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "oswaldo1",
+    "familyName": "Oscar y Osvaldo",
+    "personalMessage": "Queridos Oscar y Osvaldo. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "rya1",
+    "familyName": "Roberto y Amada",
+    "personalMessage": "Queridos Roberto y Amada. Nos complace invitarlos a nuestra boda."
   }
 ]
