@@ -218,5 +218,10 @@
     "password": "famsolano4",
     "familyName": "Miguel y Margarita",
     "personalMessage": "Queridos Miguel y Margarita. Nos complace invitarlos a nuestra boda."
+  },
+  {
+    "password": "aldo1",
+    "familyName": "Aldo",
+    "personalMessage": "Estimado aldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
   }
 ]
