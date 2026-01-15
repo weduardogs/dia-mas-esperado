@@ -222,6 +222,21 @@
   {
     "password": "aldo1",
     "familyName": "Aldo",
-    "personalMessage": "Estimado aldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+    "personalMessage": "Estimado Aldo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "amigomoy1",
+    "familyName": "Moisés",
+    "personalMessage": "Querido Moisés, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "amigaviri1",
+    "familyName": "Viridiana",
+    "personalMessage": "Querida Viridiana, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
+  },
+  {
+    "password": "amigorichi1",
+    "familyName": "Ricardo Sánchez",
+    "personalMessage": "Querido Ricardo, tu compañía es muy importante. ¡Nos encantaría contar con tu presensia!"
   }
 ]
